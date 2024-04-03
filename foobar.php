@@ -1,4 +1,21 @@
 <?php
+
+function generateFooBar($input) {
+    $result = '';
+
+    for ($i = 1; $i <= $input; $i++) {
+        if ($i % 3 === 0) {
+            $result .= "Foo\n";
+        } elseif ($i % 5 === 0) {
+            $result .= "Bar\n";
+        } else {
+            $result .= "$i\n";
+        }
+    }
+
+    return $result;
+}
+
 echo "Please enter a positive integer:";
 $input = strtolower(trim(fgets(STDIN)));
 
@@ -7,16 +24,4 @@ if (!ctype_digit($input) || $input <= 0) {
     exit;
 }
 
-for ($i = 1; $i <= $input; $i++) {
-    if ($i % 3 === 0 && $i % 5 === 0) {
-        echo "FooBar";
-    } elseif ($i % 3 === 0) {
-        echo "Foo";
-    } elseif ($i % 5 === 0) {
-        echo "Bar";
-    } else {
-        echo $i;
-    }
-
-    echo PHP_EOL; 
-}
+echo generateFooBar($input);
